@@ -27,10 +27,10 @@ const httpsServer = https.createServer({
   cert: fs.readFileSync('./cert/cert.pem'),
 }, app);
 
-httpServer.listen(80, () => {
+httpServer.listen(80, "alexsyw.me", () => {
     console.log('HTTP Server running on port 80');
 });
 
-httpsServer.listen(443, () => {
+httpsServer.listen(443, "alexsyw.me", () => {
     console.log('HTTPS Server running on port 443');
 });
