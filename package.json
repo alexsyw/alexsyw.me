@@ -1,13 +1,26 @@
 {
   "name": "alexsyw.me",
-  "version": "",
   "description": "",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
-    "dev": "nodemon server.js"
+    "dev": "nodemon dev.js",
+    "start": "node server.js"
   },
   "dependencies": {
     "express": "^4.18.2",
     "nodemon": "^2.0.20"
-  }
+  },
+  "version": "1.0.0",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexsyw/alexsyw.me.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexsyw/alexsyw.me/issues"
+  },
+  "homepage": "https://alexsyw.me"
 }

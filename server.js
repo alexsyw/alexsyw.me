@@ -4,7 +4,9 @@ const _tinkoff_ref = require('./_redirects/tinkoff.js');
 const express = require('express');
 const path = require('path');
 const app = express();
-const PORT = 80;
+const https = require('https');
+const http = require('http');
+const fs = require('fs');
 
 const Path = (page) => path.resolve(__dirname, 'source', `${page}`);
 app.use(express.static(__dirname + '/source'));
@@ -18,6 +20,17 @@ app.use('/tinkoff', _tinkoff_ref);
 app.use((req, res) => {
     res.status(404).sendFile(Path('index.html'));
 });
-app.listen(PORT, (error) => {
-  error ? console.log(error) : console.log(`listening port ${PORT}`);
+
+const httpServer = http.createServer(app);
+const httpsServer = https.createServer({
+  key: fs.readFileSync('./cert/key.pem'),
+  cert: fs.readFileSync('./cert/cert.pem'),
+}, app);
+
+httpServer.listen(80, () => {
+    console.log('HTTP Server running on port 80');
+});
+
+httpsServer.listen(443, () => {
+    console.log('HTTPS Server running on port 443');
 });
